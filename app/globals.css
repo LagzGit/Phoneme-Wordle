@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f4f6f1;
+  --paper-alt: #e8ede4;
+  --surface: #ffffff;
+  --ink: #142526;
+  --ink-soft: #48605f;
+  --border: #d6ddcf;
+  --primary: #2b6669;
+  --primary-dark: #1c4547;
+  --primary-soft: #dfeceb;
+  --amber: #d98d2b;
+  --amber-soft: #f7e6c6;
+  --brick: #ab4c3f;
+  --brick-soft: #f3ddd7;
+
+  --shadow-tile: 0 1px 0 rgba(20, 37, 38, 0.06), 0 8px 20px -12px rgba(20, 37, 38, 0.35);
+}
+
+.dark {
+  --paper: #0e1b1c;
+  --paper-alt: #142627;
+  --surface: #16292a;
+  --ink: #eaf2ef;
+  --ink-soft: #9fb6b3;
+  --border: #23393a;
+  --primary: #62b6b0;
+  --primary-dark: #8fd0ca;
+  --primary-soft: #1c3a38;
+  --amber: #eeb257;
+  --amber-soft: #3a2f1b;
+  --brick: #e2897b;
+  --brick-soft: #3a2320;
+
+  --shadow-tile: 0 1px 0 rgba(0, 0, 0, 0.4), 0 10px 24px -12px rgba(0, 0, 0, 0.6);
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-alt: var(--paper-alt);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-soft: var(--primary-soft);
+  --color-amber: var(--amber);
+  --color-amber-soft: var(--amber-soft);
+  --color-brick: var(--brick);
+  --color-brick-soft: var(--brick-soft);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--amber-soft);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---- Phoneme keycap tile ---- */
+.phoneme-tile {
+  position: relative;
+  perspective: 600px;
+  width: var(--tile-size, 3.6rem);
+  height: var(--tile-size, 3.6rem);
+}
+
+.phoneme-tile__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.45s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.phoneme-tile:hover .phoneme-tile__inner,
+.phoneme-tile:focus-within .phoneme-tile__inner,
+.phoneme-tile[data-flipped="true"] .phoneme-tile__inner {
+  transform: rotateY(180deg);
+}
+
+.phoneme-tile__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 0.65rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-tile);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  padding: 0.25rem;
+}
+
+.phoneme-tile__face--back {
+  transform: rotateY(180deg);
+  background: var(--primary-soft);
+  border-color: var(--primary);
+}
+
+.phoneme-tile--correct .phoneme-tile__face {
+  background: var(--amber-soft);
+  border-color: var(--amber);
+}
+
+.phoneme-tile--incorrect .phoneme-tile__face {
+  background: var(--brick-soft);
+  border-color: var(--brick);
+}
+
+.underline-scribble {
+  background-image: linear-gradient(transparent 65%, var(--amber-soft) 65%);
+}
