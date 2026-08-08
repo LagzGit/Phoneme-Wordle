@@ -92,17 +92,18 @@ export default function AboutPage() {
         <h2 className="font-display text-lg font-semibold text-ink">
           Walkthrough video
         </h2>
+
         <p className="mt-2 text-sm text-ink-soft">
-          A short video explaining how to use the builder will be embedded
-          here before submission.
+          A video demonstration explaining how to use the Phoneme Activity Builder.
         </p>
-        <div
-          className="mt-4 flex aspect-video items-center justify-center rounded-xl border border-dashed border-border bg-surface text-sm text-ink-soft"
-          role="img"
-          aria-label="Placeholder for walkthrough video"
-        >
-          Video placeholder — replace with an embedded player before
-          submission
+
+        <div className="mt-4 aspect-video overflow-hidden rounded-xl border border-border">
+          <iframe
+            className="h-full w-full"
+            src="https://www.youtube.com/embed/9kvR9LKeRpk"
+            title="Phoneme Activity Builder walkthrough"
+            allowFullScreen
+          />
         </div>
       </div>
 
