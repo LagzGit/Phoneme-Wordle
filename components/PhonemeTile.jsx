@@ -9,6 +9,7 @@ export default function PhonemeTile({
   onClick,
   as = "button",
   forceFlipped = false,
+  showHint = true,
 }) {
   const Tag = as === "button" ? "button" : "div";
   const classes = [
@@ -25,20 +26,23 @@ export default function PhonemeTile({
       style={{ "--tile-size": size }}
       onClick={onClick}
       data-flipped={forceFlipped ? "true" : "false"}
+      data-hints={showHint ? "true" : "false"}
       type={as === "button" ? "button" : undefined}
       tabIndex={as === "button" ? undefined : 0}
-      aria-label={`/${ipa}/ sounds like ${label}, as in ${example}`}
+      aria-label={showHint ? `/${ipa}/ sounds like ${label}, as in ${example}` : `Phoneme /${ipa}/`}
     >
       <span className="phoneme-tile__inner">
         <span className="phoneme-tile__face font-mono text-lg text-ink">
           /{ipa}/
         </span>
-        <span className="phoneme-tile__face phoneme-tile__face--back">
-          <span className="font-display text-base font-semibold text-primary-dark">
-            {label}
+        {showHint && (
+          <span className="phoneme-tile__face phoneme-tile__face--back">
+            <span className="font-display text-base font-semibold text-primary-dark">
+              {label}
+            </span>
+            <span className="text-[0.65rem] text-ink-soft">as in {example}</span>
           </span>
-          <span className="text-[0.65rem] text-ink-soft">as in {example}</span>
-        </span>
+        )}
       </span>
     </Tag>
   );

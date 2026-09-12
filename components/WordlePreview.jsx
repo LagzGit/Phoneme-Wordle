@@ -7,7 +7,7 @@ import { findPhoneme } from "@/lib/phonemes";
 // NOTE: the parent passes a `key` derived from (target, maxGuesses) so this
 // component remounts — and its state resets cleanly — whenever the builder
 // configuration changes, rather than syncing state inside an effect.
-export default function WordlePreview({ target, maxGuesses }) {
+export default function WordlePreview({ target, maxGuesses, showHints = true }) {
   const targetPhonemes = useMemo(() => target.phonemes, [target]);
   const wordLength = targetPhonemes.length;
 
@@ -129,7 +129,11 @@ export default function WordlePreview({ target, maxGuesses }) {
         </button>
       </div>
 
-      <PhonemeKeyboard onSelect={addPhoneme} disabled={status !== "playing"} />
+      <PhonemeKeyboard
+        onSelect={addPhoneme}
+        disabled={status !== "playing"}
+        showHints={showHints}
+      />
 
       {status !== "playing" && (
         <div className="rounded-lg border border-amber bg-amber-soft px-4 py-3 text-center">

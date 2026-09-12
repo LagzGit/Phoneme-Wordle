@@ -21,15 +21,11 @@ export default function AboutPage() {
           them as a single, playable HTML page.
         </p>
         <p>
-          <strong className="text-ink">
-            Assessment 1 is frontend only.
-          </strong>{" "}
-          Everything in this build — the builder screens, previews, and
-          exported activities — runs entirely in the browser using a fixed
-          set of preset words. There is no database or dynamic word-list
-          management yet; that is introduced in Assessment 2, which will
-          allow teachers to manage larger word banks and rotate through
-          multiple target words automatically.
+          <strong className="text-ink">Assessment 2 adds the data layer.</strong>{" "}
+          Teachers can now create, retrieve, edit and delete multiple activity
+          configurations. The Next.js route handlers validate requests, Prisma
+          maps application data to SQLite, and the builders retrieve saved data
+          before previewing or exporting an activity.
         </p>
 
         <div className="rounded-xl border border-border bg-surface p-6">
@@ -50,7 +46,7 @@ export default function AboutPage() {
             Phoneme Word Search
           </h2>
           <p className="mt-2 text-sm leading-relaxed">
-            A supporting literacy task built around a fixed list of five
+            A supporting literacy task built around a stored list of
             phoneme-based words. Each grid cell holds one phoneme unit
             (rather than one letter), so a digraph like /tʃ/ still occupies a
             single cell — the word list is shown as hoverable phoneme tiles
@@ -64,10 +60,23 @@ export default function AboutPage() {
           </h2>
           <p className="mt-2 text-sm leading-relaxed">
             Both activities use HCE (Harrington, Cox &amp; Evans) broad
-            Australian English phonemic transcription. Assessment 1 keeps
-            the activity data intentionally small: one Wordle target and five
-            fixed Word Search words, while the phoneme keyboard provides the
-            symbols needed for gameplay (Cox, 2008; Harrington et al., 1997).
+            Australian English phonemic transcription. Ordered phonemes are
+            stored as separate string values, so a multi-character symbol such
+            as /tʃ/ occupies one database record and one puzzle cell (Cox,
+            2008; Harrington et al., 1997).
+          </p>
+        </div>
+
+        <div className="rounded-xl border border-border bg-surface p-6">
+          <h2 className="font-display text-xl font-semibold text-ink">
+            Backend architecture
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed">
+            Activity, Word and WordPhoneme tables form two one-to-many
+            relationships. REST-style route handlers provide CRUD operations,
+            Zod validates incoming JSON, and a health route checks the database
+            connection. The same stored record supplies the live preview and
+            the downloadable HTML output.
           </p>
         </div>
       </div>
@@ -90,11 +99,12 @@ export default function AboutPage() {
 
       <div className="mt-8">
         <h2 className="font-display text-lg font-semibold text-ink">
-          Walkthrough video
+          Assessment 1 interface walkthrough
         </h2>
 
         <p className="mt-2 text-sm text-ink-soft">
-          A video demonstration explaining how to use the Phoneme Activity Builder.
+          This earlier video records the frontend completed in Assessment 1.
+          Assessment 2 extends that interface with saved activities and backend APIs.
         </p>
 
         <div className="mt-4 aspect-video overflow-hidden rounded-xl border border-border">
@@ -158,6 +168,33 @@ export default function AboutPage() {
             Accessibility Guidelines (WCAG) 2.2</em>.{" "}
             <a className="text-primary-dark underline" href="https://www.w3.org/TR/WCAG22/">
               https://www.w3.org/TR/WCAG22/
+            </a>
+          </li>
+          <li>
+            Docker. (n.d.). <em>Containerize a Next.js application</em>.
+            Retrieved September 12, 2026, from{" "}
+            <a className="text-primary-dark underline" href="https://docs.docker.com/guides/nextjs/">
+              https://docs.docker.com/guides/nextjs/
+            </a>
+          </li>
+          <li>
+            Prisma Data, Inc. (n.d.). <em>CRUD</em>. Prisma Documentation.
+            Retrieved September 12, 2026, from{" "}
+            <a className="text-primary-dark underline" href="https://www.prisma.io/docs/orm/prisma-client/queries/crud">
+              https://www.prisma.io/docs/orm/prisma-client/queries/crud
+            </a>
+          </li>
+          <li>
+            Prisma Data, Inc. (n.d.). <em>SQLite database connector</em>.
+            Prisma Documentation. Retrieved September 12, 2026, from{" "}
+            <a className="text-primary-dark underline" href="https://www.prisma.io/docs/orm/core-concepts/supported-databases/sqlite">
+              https://www.prisma.io/docs/orm/core-concepts/supported-databases/sqlite
+            </a>
+          </li>
+          <li>
+            Vercel. (2026, February 27). <em>Route handlers</em>. Next.js Docs.{" "}
+            <a className="text-primary-dark underline" href="https://nextjs.org/docs/app/getting-started/route-handlers">
+              https://nextjs.org/docs/app/getting-started/route-handlers
             </a>
           </li>
         </ul>

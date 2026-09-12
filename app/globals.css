@@ -108,8 +108,8 @@ body {
   transform-style: preserve-3d;
 }
 
-.phoneme-tile:hover .phoneme-tile__inner,
-.phoneme-tile:focus-within .phoneme-tile__inner,
+.phoneme-tile[data-hints="true"]:hover .phoneme-tile__inner,
+.phoneme-tile[data-hints="true"]:focus-within .phoneme-tile__inner,
 .phoneme-tile[data-flipped="true"] .phoneme-tile__inner {
   transform: rotateY(180deg);
 }
@@ -148,4 +148,72 @@ body {
 
 .underline-scribble {
   background-image: linear-gradient(transparent 65%, var(--amber-soft) 65%);
+}
+
+@utility form-control {
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  padding: 0.55rem 0.7rem;
+  color: var(--ink);
+  font-size: 0.875rem;
+}
+
+@utility button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  background: var(--primary);
+  padding: 0.6rem 1rem;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+@utility button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  border: 1px solid var(--primary);
+  background: var(--surface);
+  padding: 0.55rem 0.9rem;
+  color: var(--primary-dark);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+@utility button-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  border: 1px solid var(--brick);
+  background: var(--brick-soft);
+  padding: 0.55rem 0.9rem;
+  color: var(--brick);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+@utility button-small {
+  border-radius: 0.375rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0.35rem 0.65rem;
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+@utility button-small-danger {
+  border-radius: 0.375rem;
+  border: 1px solid var(--brick);
+  background: var(--brick-soft);
+  padding: 0.35rem 0.65rem;
+  color: var(--brick);
+  font-size: 0.75rem;
+  font-weight: 600;
 }

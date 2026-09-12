@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const PRIMARY_LINKS = [
   { href: "/", label: "Home" },
+  { href: "/activities", label: "Manage Activities" },
   { href: "/wordle", label: "Wordle" },
   { href: "/wordsearch", label: "Word Search" },
 ];
@@ -34,7 +35,7 @@ export default function SiteHeader() {
               Phoneme Activity Builder
             </span>
             <span className="text-[0.65rem] font-medium text-ink-soft">
-              Assessment 1 · Frontend design and usability
+              Assessment 2 · Backend and database
             </span>
           </span>
         </Link>

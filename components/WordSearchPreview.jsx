@@ -11,7 +11,7 @@ function cellKey(r, c) {
 // NOTE: the parent passes a `key` derived from the grid configuration so
 // this component remounts — and its selection/found state resets cleanly —
 // whenever size, diagonals or shuffle seed change.
-export default function WordSearchPreview({ grid, placements, words }) {
+export default function WordSearchPreview({ grid, placements, words, showHints = true }) {
   const size = grid.length;
   const [selection, setSelection] = useState([]);
   const [found, setFound] = useState(new Set());
@@ -148,6 +148,7 @@ export default function WordSearchPreview({ grid, placements, words }) {
                         example={meta?.example ?? w.word.toLowerCase()}
                         size="2rem"
                         as="div"
+                        showHint={showHints}
                       />
                     );
                   })}
@@ -159,6 +160,9 @@ export default function WordSearchPreview({ grid, placements, words }) {
                 >
                   {w.word}
                 </span>
+                {showHints && w.hint && (
+                  <span className="basis-full text-xs text-ink-soft">{w.hint}</span>
+                )}
               </div>
             );
           })}

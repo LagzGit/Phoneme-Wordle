@@ -16,29 +16,29 @@ export default function HomePage() {
         <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-14 sm:px-6 lg:flex-row lg:items-center lg:py-20">
           <div className="max-w-xl">
             <p className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-primary">
-              Assessment 1 — Frontend only
+              Assessment 2 — Backend and database integration
             </p>
             <h1 className="font-display text-4xl font-semibold leading-tight text-ink sm:text-5xl">
               Build phoneme-based Wordle &amp; Word Search activities.
             </h1>
             <p className="mt-4 text-base leading-relaxed text-ink-soft sm:text-lg">
               A classroom activity builder for Speech Pathology teachers.
-              Configure a game around a target sound, preview it instantly,
-              then generate a single HTML file your class can play in any
-              browser — no login, no install.
+              Store phoneme word lists and activity settings, retrieve them
+              through the backend, preview the result, then generate a single
+              HTML file your class can play in any browser.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
-                href="/wordle"
+                href="/activities"
                 className="rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-dark"
               >
-                Build a Wordle activity
+                Create or manage activities
               </Link>
               <Link
-                href="/wordsearch"
+                href="/wordle"
                 className="rounded-md border border-primary px-5 py-2.5 text-sm font-semibold text-primary-dark transition-colors hover:bg-primary-soft"
               >
-                Build a Word Search
+                Open Wordle builder
               </Link>
             </div>
           </div>
@@ -63,25 +63,31 @@ export default function HomePage() {
         <div className="mt-6 grid gap-5 sm:grid-cols-3">
           <StepCard
             index="01"
-            title="Configure"
-            body="Choose an activity title and difficulty in a simple builder panel."
+            title="Store"
+            body="Create reusable activity records with words, ordered phonemes, hints and difficulty settings."
           />
           <StepCard
             index="02"
-            title="Preview"
-            body="See the exact phoneme tiles, hints and layout your students will get, live in the browser."
+            title="Retrieve"
+            body="Select a saved Wordle or Word Search and preview the exact data returned by the backend API."
           />
           <StepCard
             index="03"
             title="Generate"
-            body="Download a single, self-contained .html file ready to open, share or run in a normal browser."
+            body="Generate a self-contained .html activity from the selected database record."
           />
         </div>
       </section>
 
       <section className="border-t border-border bg-surface">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-3">
+            <ActivityLink
+              href="/activities"
+              eyebrow="Database"
+              title="Activity Manager"
+              body="Create, read, update and delete activity configurations, words and multi-character phoneme values."
+            />
             <ActivityLink
               href="/wordle"
               eyebrow="Activity 1"

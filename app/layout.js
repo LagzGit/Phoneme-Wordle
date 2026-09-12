@@ -26,7 +26,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata = {
   title: "Phoneme Activity Builder",
   description:
-    "A frontend builder for phoneme-based Wordle and Word Search classroom activities for Speech Pathology students and teachers.",
+    "A database-driven builder for phoneme-based Wordle and Word Search classroom activities for Speech Pathology teachers.",
 };
 
 export default async function RootLayout({ children }) {

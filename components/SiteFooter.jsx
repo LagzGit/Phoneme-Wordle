@@ -6,7 +6,7 @@ export default function SiteFooter() {
           <span className="font-medium text-ink">Tanish Sudan</span> — Student
           Number: 22407274
         </p>
-        <p>Assessment 1 · Frontend design and usability</p>
+        <p>Assessment 2 · Backend implementation and database integration</p>
       </div>
     </footer>
   );

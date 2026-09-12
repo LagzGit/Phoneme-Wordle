@@ -1,0 +1,25 @@
+services:
+  phoneme-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: phoneme-builder:assessment2
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: file:/app/data/phoneme.db
+    volumes:
+      - phoneme-data:/app/data
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://localhost:3000/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+volumes:
+  phoneme-data:
